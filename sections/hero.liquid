@@ -1,19 +1,22 @@
-<!-- Hero section inspired by meadowbliss.org -->
-<section id="hero" class="hero-section">
+<!-- Hero section inspired by meadowbliss.org (refined for stronger visual) -->
+<section id="hero" class="hero-section hero-strong">
   <div class="wrap hero-inner">
     <div class="hero-content">
       <h1>{{ section.settings.heading | default: "Nurture Nature, Embrace Serenity" }}</h1>
       <p class="subheading">{{ section.settings.subheading | default: "Community-driven projects, wellbeing, and nature conservation." }}</p>
       <div class="hero-ctas">
-        <a href="{{ section.settings.primary_link }}" class="btn cta primary">{{ section.settings.primary_label | default: "Donate" }}</a>
+        <!-- Primary CTA opens the donate modal for immediate interaction -->
+        <button type="button" class="btn cta primary donate-open" data-target="#donate-modal">{{ section.settings.primary_label | default: "Donate" }}</button>
         <a href="{{ section.settings.secondary_link }}" class="btn cta ghost">{{ section.settings.secondary_label | default: "Learn More" }}</a>
       </div>
+      <p class="hero-kicker muted small">{{ section.settings.kicker | default: "Community-led conservation & events" }}</p>
     </div>
     <div class="hero-media">
       {% if section.settings.media %}
-        <img src="{{ section.settings.media | img_url: '1200x' }}" alt="Hero image">
+        <img src="{{ section.settings.media | img_url: '1600x' }}" alt="Hero image">
       {% else %}
-        <img src="{{ 'placeholder-hero.jpg' | asset_url }}" alt="Hero image">
+        <!-- Fallback: gradient block for consistent visual without an uploaded image -->
+        <div class="hero-fallback"></div>
       {% endif %}
     </div>
   </div>
@@ -23,6 +26,7 @@
 {
   "name": "Hero",
   "settings": [
+    {"type":"text","id":"kicker","label":"Kicker"},
     {"type":"text","id":"heading","label":"Heading"},
     {"type":"text","id":"subheading","label":"Subheading"},
     {"type":"url","id":"primary_link","label":"Primary button link","default":"/collections"},

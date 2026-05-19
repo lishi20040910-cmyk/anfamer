@@ -11,6 +11,9 @@
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Noto+Sans:wght@300;400;700&display=swap" rel="stylesheet">
 
     {{ content_for_header }}
+    <style>/* quick font-display fallback to reduce CLS */
+      .wf-loading body{visibility:hidden}
+    </style>
   </head>
   <body class="theme-root">
     <header class="site-header">
@@ -35,6 +38,44 @@
     </main>
 
     {% section 'footer' %}
+
+    <!-- Donate modal (opened by hero CTA / floating button) -->
+    <div id="donate-modal" class="donate-modal" aria-hidden="true" role="dialog" aria-label="Donate form">
+      <div class="donate-modal-backdrop" data-action="close"></div>
+      <div class="donate-modal-panel">
+        <button class="donate-modal-close" data-action="close" aria-label="Close">✕</button>
+        <h2>Make a donation</h2>
+        <p>Support our work — choose an amount or enter a custom value.</p>
+        <form id="donate-form" action="/cart/add" method="post">
+          <!-- NOTE: Replace DONATION_VARIANT_ID with a real variant id for your donation product -->
+          <input type="hidden" name="id" id="donation-variant-id" value="">
+
+          <fieldset class="donation-presets">
+            <legend>Choose an amount</legend>
+            <label><input type="radio" name="donation_amount" value="10"> $10</label>
+            <label><input type="radio" name="donation_amount" value="25"> $25</label>
+            <label><input type="radio" name="donation_amount" value="50"> $50</label>
+            <label><input type="radio" name="donation_amount" value="other"> Other</label>
+          </fieldset>
+
+          <div class="donation-other" style="display:none;">
+            <input type="number" name="donation_custom" min="1" placeholder="Custom amount ($)">
+          </div>
+
+          <label class="sr-only">Email</label>
+          <input type="email" name="properties[email]" placeholder="Your email (optional)">
+
+          <label class="sr-only">Message</label>
+          <textarea name="properties[message]" placeholder="Optional message"></textarea>
+
+          <div class="donate-actions">
+            <button class="btn cta primary" type="submit">Donate</button>
+            <button class="btn cta ghost" type="button" data-action="close">Cancel</button>
+          </div>
+        </form>
+        <p class="donation-note muted">Note: Replace the hidden variant id with your donation product variant id to enable adding to cart. Currently this form is a demo.</p>
+      </div>
+    </div>
 
     {{ 'theme.js' | asset_url | script_tag }}
     {{ content_for_footer }}
