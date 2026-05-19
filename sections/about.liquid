@@ -1,0 +1,32 @@
+<section class="section about">
+  <div class="wrap">
+    <div class="about-grid">
+      <div>
+        <h2>{{ section.settings.title | default: "Our Mission" }}</h2>
+        <p>{{ section.settings.text | default: "We connect people with nature through events, education, and community projects." }}</p>
+        <a class="btn cta" href="{{ section.settings.link }}">{{ section.settings.link_label | default: "Read More" }}</a>
+      </div>
+      <div class="about-media">
+        {% if section.settings.image %}
+          <img src="{{ section.settings.image | img_url: '600x' }}" alt="About">
+        {% else %}
+          <img src="{{ 'placeholder-about.jpg' | asset_url }}" alt="About">
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name":"About",
+  "settings":[
+    {"type":"text","id":"title","label":"Title","default":"Our Mission"},
+    {"type":"textarea","id":"text","label":"Text"},
+    {"type":"url","id":"link","label":"Link","default":"/pages/about"},
+    {"type":"text","id":"link_label","label":"Link label","default":"Read More"},
+    {"type":"image_picker","id":"image","label":"Image"}
+  ],
+  "presets":[{"name":"About"}]
+}
+{% endschema %}

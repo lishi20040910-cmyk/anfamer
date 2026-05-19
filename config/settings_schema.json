@@ -1,0 +1,14 @@
+[
+  {
+    "name": "Theme",
+    "settings": [
+      {"type":"header","content":"Colors"},
+      {"type":"color","id":"color_primary","label":"Primary color","default":"#6DAE81"},
+      {"type":"color","id":"color_accent","label":"Accent color","default":"#F2C94C"},
+      {"type":"header","content":"Social links"},
+      {"type":"text","id":"social_facebook","label":"Facebook URL"},
+      {"type":"text","id":"social_instagram","label":"Instagram URL"},
+      {"type":"text","id":"social_twitter","label":"Twitter URL"}
+    ]
+  }
+]

@@ -1,0 +1,14 @@
+{
+  "sections": {
+    "article": {
+      "type": "article"
+    },
+    "footer": {
+      "type": "footer"
+    }
+  },
+  "order": [
+    "article",
+    "footer"
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "sections": {
+    "collection": {
+      "type": "collection-list"
+    },
+    "footer": {
+      "type": "footer"
+    }
+  },
+  "order": [
+    "collection",
+    "footer"
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "sections": {
+    "404": {
+      "type": "static-404"
+    },
+    "footer": {
+      "type": "footer"
+    }
+  },
+  "order": ["404","footer"]
+}

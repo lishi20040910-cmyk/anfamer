@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>{{ page_title }} - {{ shop.name }}</title>
+
+    {{ 'theme.css' | asset_url | stylesheet_tag }}
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Noto+Sans:wght@300;400;700&display=swap" rel="stylesheet">
+
+    {{ content_for_header }}
+  </head>
+  <body class="theme-root">
+    <header class="site-header">
+      <div class="wrap header-inner">
+        <a class="logo" href="/">{% if settings.logo %}<img src="{{ settings.logo | img_url: '200x' }}" alt="{{ shop.name }}">{% else %}<img src="{{ 'placeholder-logo.svg' | asset_url }}" alt="{{ shop.name }}">{% endif %}</a>
+        <nav class="main-nav">
+          <ul>
+            <li><a href="/collections">Shop</a></li>
+            <li><a href="/blogs/news">Blog</a></li>
+            <li><a href="/pages/about">About</a></li>
+          </ul>
+        </nav>
+        <div class="header-actions">
+          <a class="btn cta" href="/cart">Cart</a>
+        </div>
+        <button class="mobile-menu-toggle" aria-label="Toggle menu">☰</button>
+      </div>
+    </header>
+
+    <main role="main">
+      {{ content_for_layout }}
+    </main>
+
+    {% section 'footer' %}
+
+    {{ 'theme.js' | asset_url | script_tag }}
+    {{ content_for_footer }}
+  </body>
+</html>

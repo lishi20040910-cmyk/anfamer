@@ -1,0 +1,15 @@
+{
+  "en": {
+    "sections": {
+      "hero": {
+        "heading": "Nurture Nature, Embrace Serenity",
+        "subheading": "Community-driven projects, wellbeing, and nature conservation.",
+        "primary_label": "Donate",
+        "secondary_label": "Learn More"
+      }
+    },
+    "footer": {
+      "follow": "Follow"
+    }
+  }
+}

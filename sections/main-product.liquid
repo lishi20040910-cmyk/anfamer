@@ -1,0 +1,27 @@
+<!-- Main product section -->
+<section class="section product-main">
+  <div class="wrap product-grid-details">
+    <div class="product-gallery">
+      {% for image in product.images %}
+        <img src="{{ image | img_url: '800x' }}" alt="{{ product.title }}">
+      {% endfor %}
+    </div>
+    <div class="product-info">
+      <h1>{{ product.title }}</h1>
+      <div class="price">{{ product.price | money }}</div>
+      <div class="description">{{ product.description_html }}</div>
+      <form method="post" action="/cart/add">
+        {% if product.variants.size > 1 %}
+          <select name="id">
+            {% for variant in product.variants %}
+              <option value="{{ variant.id }}">{{ variant.title }} - {{ variant.price | money }}</option>
+            {% endfor %}
+          </select>
+        {% else %}
+          <input type="hidden" name="id" value="{{ product.variants.first.id }}">
+        {% endif %}
+        <button class="btn cta primary" type="submit">Add to cart</button>
+      </form>
+    </div>
+  </div>
+</section>

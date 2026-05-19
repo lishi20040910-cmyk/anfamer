@@ -1,0 +1,30 @@
+<footer class="site-footer">
+  <div class="wrap footer-inner">
+    <div class="footer-brand">
+      <a href="/">{% if settings.logo %}<img src="{{ settings.logo | img_url: '200x' }}" alt="{{ shop.name }}">{% else %}<img src="{{ 'placeholder-logo.svg' | asset_url }}" alt="{{ shop.name }}">{% endif %}</a>
+      <p class="muted">{{ settings.footer_text | default: "© " | append: shop.name }}</p>
+    </div>
+    <div class="footer-links">
+      <h4>Explore</h4>
+      <ul>
+        <li><a href="/collections">Shop</a></li>
+        <li><a href="/pages/about">About</a></li>
+        <li><a href="/blogs/news">Blog</a></li>
+      </ul>
+    </div>
+    <div class="footer-social">
+      <h4>Follow</h4>
+      {% render 'social-links' %}
+    </div>
+  </div>
+</footer>
+
+{% schema %}
+{
+  "name":"Footer",
+  "settings":[
+    {"type":"textarea","id":"footer_text","label":"Footer text","default":"© 2026 Meadow Bliss"}
+  ],
+  "presets":[{"name":"Footer"}]
+}
+{% endschema %}
